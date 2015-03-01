@@ -130,16 +130,15 @@ defmodule Base62 do
   def decode(binary) do
     binary
     |> String.split("", trim: true)
-    |> Enum.map(&decode/1)
     |> Enum.reverse
     |> decode(0)
     |> round
   end
 
   defp decode([last], step) do
-    last * :math.pow(62, step)
+    decode(last) * :math.pow(62, step)
   end
   defp decode([head|tail], step) do
-    head * :math.pow(62, step) + decode(tail, step + 1)
+    decode(head) * :math.pow(62, step) + decode(tail, step + 1)
   end
 end
