@@ -17,7 +17,8 @@ defmodule Db.Mixfile do
 
   def deps do
     [{:postgrex, "~> 0.6"},
-    {:poolboy, "~> 1.4.0"},
-    {:faker, "~> 0.5.0", only: :test}]
+     {:poolboy, "~> 1.4.0"},
+     {:base62, "~> 1.0.0"},
+     {:faker, "~> 0.5.0", only: :test}]
   end
 end

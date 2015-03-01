@@ -18,6 +18,7 @@ defmodule Web.Mixfile do
   defp deps do
     [{:cowboy, "~> 1.0.0"},
      {:plug, "~> 0.10.0"},
+     {:base62, "~> 1.0.0"},
      {:db, in_umbrella: true}]
   end
 end
