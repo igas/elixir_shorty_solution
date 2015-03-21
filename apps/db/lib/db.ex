@@ -36,7 +36,7 @@ defmodule Db do
 
   def expand(code) do
     :poolboy.transaction(:db, fn(worker) ->
-      case GenServer.call(worker, {:expand, Base62.decode(code)}) do
+      case GenServer.call(worker, {:expand, Base62.decode!(code)}) do
         nil -> :not_found
         url -> url
       end
@@ -45,13 +45,13 @@ defmodule Db do
 
   def get(code) do
     :poolboy.transaction(:db, fn(worker) ->
-      GenServer.call(worker, {:get, Base62.decode(code)})
+      GenServer.call(worker, {:get, Base62.decode!(code)})
     end)
   end
 
   def statistics(code) do
     :poolboy.transaction(:db, fn(worker) ->
-      GenServer.call(worker, {:statistics, Base62.decode(code)})
+      GenServer.call(worker, {:statistics, Base62.decode!(code)})
     end)
   end
 
